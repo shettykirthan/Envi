@@ -12,10 +12,10 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <Link to ="/Home"><p className="nav-logo">MyApp</p></Link>
+      <Link to ="/Home">MyApp</Link>
       <div className={`nav-items ${isOpen ? 'open' : ''}`}>
-        <Link to ="/About"><a href="#about">About</a></Link>
-        <Link to ="/Contact"><a href="#contact">Contact</a></Link>
+        <Link to ="/About">About</Link>
+        <Link to ="/Contact">Contact</Link>
       </div>
       <div className="nav-toggle" onClick={toggleMenu}>
         <div className="bar"></div>
@@ -25,5 +25,4 @@ const Navbar = () => {
     </nav>
   );
 };
-
 export default Navbar;
