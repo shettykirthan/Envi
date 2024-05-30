@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '../index.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { account } from '../appwrite/config';
+import Navbar from '../components/Navbar';
 
 const Register = () => {
   const [name, setName] = useState('');
@@ -21,7 +22,7 @@ const Register = () => {
           name // name (optional)
         );
         console.log(result);
-        
+
         navigate("/login")
       } catch (error) {
         setError(error.message || 'Failed to register');
@@ -33,6 +34,8 @@ const Register = () => {
   };
 
   return (
+    <>
+    <Navbar />
     <div className="register-container">
       <form className="register-form" onSubmit={handleSubmit}>
         <h2>Register</h2>
@@ -71,6 +74,7 @@ const Register = () => {
         <button type="submit">Register</button>
       </form>
     </div>
+    </>
   );
 };
 
