@@ -1,0 +1,279 @@
+.welcome-container {
+    background-color: #c9facc; /* Light green background */
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .form-container {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .input-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  input[type="text"],
+  input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  
+  input[type="text"]:focus,
+  input[type="date"]:focus {
+    outline: none;
+    border-color: #5cb85c; /* Green focus border */
+  }
+  .welcome-container {
+    background-color: #c9facc; /* Light green background */
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .form-container {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .input-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  
+  input[type="number"]:focus {
+    outline: none;
+    border-color: #5cb85c; /* Green focus border */
+  }
+  
+  button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #5cb85c; /* Green background */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #4cae4c; /* Darker green on hover */
+  }
+  .flight-container {
+    background-color: #c9facc; /* Light green background */
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .form-container {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .input-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  input[type="text"],
+  input[type="number"],
+  select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  
+  input[type="text"]:focus,
+  input[type="number"]:focus,
+  select:focus {
+    outline: none;
+    border-color: #5cb85c; /* Green focus border */
+  }
+  
+  button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #5cb85c; /* Green background */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #4cae4c; /* Darker green on hover */
+  }
+  
+  input[type="checkbox"] {
+    margin-right: 10px;
+  }
+
+  .car-container {
+    background-color: #c9facc; /* Light green background */
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .form-container {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .input-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  input[type="number"],
+  select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  
+  input[type="number"]:focus,
+  select:focus {
+    outline: none;
+    border-color: #5cb85c; /* Green focus border */
+  }
+  
+  button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #5cb85c; /* Green background */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #4cae4c; /* Darker green on hover */
+  }
+  .motorbike-container {
+    background-color: #c9facc; /* Light green background */
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .form-container {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .input-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  input[type="number"],
+  select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  
+  input[type="number"]:focus,
+  select:focus {
+    outline: none;
+    border-color: #5cb85c; /* Green focus border */
+  }
+  
+  button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #5cb85c; /* Green background */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #4cae4c; /* Darker green on hover */
+  }
+  
+  
+  .result-container {
+    background-color: #c9facc; /* Light blue background */
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 80%;
+  
+    margin: 0 auto;
+  }
+  
+  h2 {
+    text-align: center;
+    color: #00796b; /* Teal color */
+  }
+  
+  .footprint-item, .footprint-total {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .footprint-item:last-child, .footprint-total {
+    border-bottom: none;
+  }
+  
+  .footprint-total {
+    font-weight: bold;
+  }
+  
+  span {
+    color: #004d40; /* Dark teal color */
+  }
+  

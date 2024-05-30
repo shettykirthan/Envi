@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import '../index.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { account } from '../appwrite/config';
 
-const Login = () => {
+const Register = () => {
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -11,33 +12,42 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (email && password) {
+    if (name && email && password) {
       try {
-        await login();
-        navigate("/user");
+        const result = await account.create(
+          'unique()', // userId
+          email, // email
+          password, // password
+          name // name (optional)
+        );
+        console.log(result);
+        // Redirect or show success message
+
+        navigate("/login")
       } catch (error) {
-        setError(error.message);
+        setError(error.message || 'Failed to register');
+        console.error(error);
       }
     } else {
-      setError("Please enter both email and password");
-    }
-  };
-
-  const login = async () => {
-    try {
-      var x = await account.createEmailPasswordSession(email, password);
-      console.log(x); 
-    } catch (e) {
-      console.error(e); // Log the error for debugging purposes
-      throw new Error("Invalid email or password");
+      setError('All fields are required');
     }
   };
 
   return (
-    <div className="login-container">
-      <form className="login-form" onSubmit={handleSubmit}>
-        <h2>Login</h2>
+    <div className="register-container">
+      <form className="register-form" onSubmit={handleSubmit}>
+        <h2>Register</h2>
         {error && <p className="error">{error}</p>}
+        <div className="form-group">
+          <label htmlFor="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+        </div>
         <div className="form-group">
           <label htmlFor="email">Email</label>
           <input
@@ -58,11 +68,10 @@ const Login = () => {
             required
           />
         </div>
-        <Link to="/register"><p>Create new account?</p></Link>
-        <button type="submit">Login</button>
+        <button type="submit">Register</button>
       </form>
     </div>
   );
 };
 
-export default Login;
+export default Register;

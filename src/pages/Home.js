@@ -1,13 +1,16 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
+import { Link } from 'react-router-dom'
 
 const Home = () => {
   return (
-    <div>
-    <Navbar />
-    
-      Home
+    <div >
+      this is the Home pages
+      global dashboard
+      <Link to="/dashboard"><button>Dashboard</button></Link>
+      register youself
+      <Link to="/login"><button>get started</button></Link>
     </div>
   )
 }
+
 export default Home
