@@ -7,7 +7,7 @@ const Car = () => {
   const [efficiency, setEfficiency] = useState('');
   const [fuelType, setFuelType] = useState('petrol');
 
-
+  
   return (
     <div className="car-container">
       <h2>Car carbon footprint calculator</h2>

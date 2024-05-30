@@ -1,41 +1,46 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import '../index.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { account } from '../appwrite/config';
+import { useAuth } from '../utils/AuthContext';
+import Navbar from '../components/Navbar';
 
 const Login = () => {
+  const navigate = useNavigate();
+  const {user,loginUser} = useAuth()
+
+  const loginForm = useRef(null)
+  useEffect(()=>{
+    if(user){
+      navigate('/user')
+    }
+
+  },[])
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const navigate = useNavigate();
+  
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    if (email && password) {
-      try {
-        await login();
-        navigate("/user");
-      } catch (error) {
-        setError(error.message);
-      }
-    } else {
-      setError("Please enter both email and password");
-    }
+    const email = loginForm.current.email.value
+    const password = loginForm.current.password.value
+    const userInfo = {email , password}
+    loginUser(userInfo)
   };
 
-  const login = async () => {
-    try {
-      var x = await account.createEmailPasswordSession(email, password);
-      console.log(x); 
-    } catch (e) {
-      console.error(e); // Log the error for debugging purposes
-      throw new Error("Invalid email or password");
-    }
-  };
+
+
+
+
+
+  
 
   return (
+    
     <div className="login-container">
-      <form className="login-form" onSubmit={handleSubmit}>
+      
+      <form ref = {loginForm}  className="login-form" onSubmit={handleSubmit}>
         <h2>Login</h2>
         {error && <p className="error">{error}</p>}
         <div className="form-group">

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../index.css';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { account } from '../appwrite/config';
 
 const Register = () => {
@@ -12,7 +12,7 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (name && email && password) {
+    if (name && email && password){
       try {
         const result = await account.create(
           'unique()', // userId
@@ -21,8 +21,7 @@ const Register = () => {
           name // name (optional)
         );
         console.log(result);
-        // Redirect or show success message
-
+        
         navigate("/login")
       } catch (error) {
         setError(error.message || 'Failed to register');
@@ -68,6 +67,7 @@ const Register = () => {
             required
           />
         </div>
+        <Link to = "/login"><p>Already have an account?</p></Link>
         <button type="submit">Register</button>
       </form>
     </div>
