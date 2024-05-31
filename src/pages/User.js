@@ -1,66 +1,95 @@
 import React, { useState } from 'react';
-import { Card, CardContent, Grid } from '@mui/material';
+import { Card, CardContent, Grid, Button } from '@mui/material';
 import Welcome from '../components/Welcome';
 import House from '../components/House';
-import Flight from '../components/Flight';
-import Car from '../components/Car';
-import Motorbike from '../components/Motorbike';
+import Water from '../components/Water';
+import Vehicle from '../components/Vehicle';
 import Navbar from '../components/Navbar';
 import Result from '../components/Result';
 
 const User = () => {
+  const components = ['Welcome', 'House', 'Vehicle', 'Water', 'Result'];
   const [selectedComponent, setSelectedComponent] = useState('Welcome');
+  const [calculatedData, setCalculatedData] = useState({
+    houseFootprint: null,
+    waterFootprint: null,
+    vehicleFootprint: null,
+  });
 
   const renderComponent = () => {
     switch (selectedComponent) {
       case 'Welcome':
         return <Welcome />;
       case 'House':
-        return <House />;
-      case 'Flight':
-        return <Flight />;
-      case 'Car':
-        return <Car />;
-      case 'Motorbike':
-        return <Motorbike />;
+        return <House setCalculatedData={setCalculatedData} />;
+      case 'Water':
+        return <Water setCalculatedData={setCalculatedData} />;
+      case 'Vehicle':
+        return <Vehicle setCalculatedData={setCalculatedData} />;
       case 'Result':
-        return <Result />;
+        return <Result calculatedData={calculatedData} />;
       default:
         return <Welcome />;
     }
   };
 
+  const handleNext = () => {
+    const currentIndex = components.indexOf(selectedComponent);
+    const nextIndex = (currentIndex + 1) % components.length;
+    setSelectedComponent(components[nextIndex]);
+  };
+
+  const handlePrevious = () => {
+    const currentIndex = components.indexOf(selectedComponent);
+    const prevIndex = (currentIndex - 1 + components.length) % components.length;
+    setSelectedComponent(components[prevIndex]);
+  };
+
   return (
-    <div>
+    <>
       <Navbar />
-      <Grid container spacing={0} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'   }}>
-        {['Welcome', 'House', 'Flight', 'Car', 'Motorbike' , 'Result'].map((component) => (
-          <Grid item key={component} style={{ padding: '3px' }}>
-            <Card 
-              onClick={() => setSelectedComponent(component)} 
-              style={{
-                width: '100px', // Set the width of the button
-                height: '75px', // Set the height of the button
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                borderRadius: '12px', // Make the card edges rounded
-                cursor: 'pointer',
-                textAlign: 'center',
-                backgroundColor: "#4CAF50"
-              }}
-            >
-              <CardContent>
-                <h3 style={{ fontSize: '15px', margin: 0 }}>{component}</h3>
-              </CardContent>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
-      <div className="user-input-section">
-        {renderComponent()}
+      <div>
+        <Grid container spacing={0} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          {components.map((component) => (
+            <Grid item key={component} style={{ padding: '3px' }}>
+              <Card
+                onClick={() => setSelectedComponent(component)}
+                style={{
+                  width: '100px',
+                  height: '75px',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  borderRadius: '12px',
+                  cursor: 'pointer',
+                  textAlign: 'center',
+                  backgroundColor: "#4CAF50"
+                }}
+              >
+                <CardContent>
+                  <h3 style={{ fontSize: '15px', margin: 0 }}>{component}</h3>
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+        <div className="user-input-section">
+          {renderComponent()}
+        </div>
+        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+          {selectedComponent !== 'Welcome' && (
+            <Button color="primary" onClick={handlePrevious} style={{ marginRight: '10px' }}>
+              Previous
+            </Button>
+          )}
+          {selectedComponent !== 'Result' && (
+            <Button color="primary" onClick={handleNext}>
+              Next
+            </Button>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

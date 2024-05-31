@@ -1,16 +1,24 @@
 import React, { useState } from 'react';
-import './componentscss.css'; // Make sure to import the CSS file
+import './componentscss.css';
 
-const Car = () => {
+const Vehicle = ({ setCalculatedData }) => {
   const [mileage, setMileage] = useState('');
-  const [year, setYear] = useState('');
   const [efficiency, setEfficiency] = useState('');
   const [fuelType, setFuelType] = useState('petrol');
+  const [calculatedFootprint, setCalculatedFootprint] = useState(null);
 
-  
+  const handleSubmit = () => {
+    const conversionFactor = fuelType === 'petrol' ? 8887 : 10180;
+    const gallonsConsumed = parseFloat(mileage) / parseFloat(efficiency);
+    const calculatedFootprintValue = (gallonsConsumed * conversionFactor * 0.001).toFixed(2);
+    
+    setCalculatedData(prev => ({ ...prev, vehicleFootprint: calculatedFootprintValue }));
+    setCalculatedFootprint(calculatedFootprintValue);
+  };
+
   return (
     <div className="car-container">
-      <h2>Car carbon footprint calculator</h2>
+      <h2>Vehicle carbon footprint calculator</h2>
       <div className="form-container">
         <div className="input-group">
           <label>Mileage (miles):</label>
@@ -21,21 +29,7 @@ const Car = () => {
           />
         </div>
         <div className="input-group">
-          <label>Choose vehicle:</label>
-          <select 
-            value={year} 
-            onChange={(e) => setYear(e.target.value)}
-          >
-            <option value="">- select year of manufacture -</option>
-            {/* Add year options as necessary */}
-            <option value="2022">2022</option>
-            <option value="2021">2021</option>
-            <option value="2020">2020</option>
-            {/* Add more options here */}
-          </select>
-        </div>
-        <div className="input-group">
-          <label>Or enter efficiency (mpg US):</label>
+          <label>Enter efficiency (mpg US):</label>
           <input 
             type="number" 
             value={efficiency} 
@@ -52,13 +46,15 @@ const Car = () => {
             <option value="diesel">Diesel</option>
             <option value="electric">Electric</option>
             <option value="hybrid">Hybrid</option>
-            {/* Add more fuel types here */}
           </select>
         </div>
-        
+        <button onClick={handleSubmit}>Calculate Car Footprint</button>
+        {calculatedFootprint !== null && (
+          <p>Your vehicle's carbon footprint is {calculatedFootprint} metric tons of CO2.</p>
+        )}
       </div>
     </div>
   );
 };
 
-export default Car;
+export default Vehicle;
