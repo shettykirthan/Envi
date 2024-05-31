@@ -1,19 +1,40 @@
 import React, { useState } from 'react';
+import { useAuth } from '../utils/AuthContext';
 import './componentscss.css';
 
-const Water = ({ setCalculatedData }) => {
+const Water = ({ setCalculatedData, documentId }) => {
+  const { user, addDocument } = useAuth();
   const [people, setPeople] = useState(1);
-  const [waterGallon, setWaterGallon] = useState(1);
+  const [waterGallon, setWaterGallon] = useState('');
   const [calculatedFootprint, setCalculatedFootprint] = useState(null);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const houseHold = parseFloat(people);
     const gallon = parseFloat(waterGallon);
     const calculatedFootprintValue = (houseHold * gallon * 365 / 100 * 0.001).toFixed(2);
     
     setCalculatedData(prev => ({ ...prev, waterFootprint: calculatedFootprintValue }));
     setCalculatedFootprint(calculatedFootprintValue);
+
+    const documentData = {
+      email: user.email,
+      gallons_of_water_used_per_day: parseFloat(gallon),
+      
+     
+    };
+  
+    try {
+      await addDocument(documentData, documentId);
+      
+    } catch (error) {
+      console.error("Error adding vehicle data:", error);
+      if (error.response && error.response.data) {
+        console.error("Appwrite error response:", error.response.data);
+      }
+      alert("Failed to add water data");
+    }
   };
+
 
   return (
     <div className="flight-container">

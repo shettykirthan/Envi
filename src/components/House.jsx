@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useAuth } from '../utils/AuthContext';
 import './componentscss.css';
 
-const House = ({ setCalculatedData }) => {
+const House = ({ setCalculatedData, setDocumentId }) => {
+  const { user, addDocument } = useAuth();
   const [people, setPeople] = useState(1);
   const [electricity, setElectricity] = useState('');
   const [naturalGas, setNaturalGas] = useState('');
@@ -9,25 +11,39 @@ const House = ({ setCalculatedData }) => {
   const [propane, setPropane] = useState('');
   const [calculatedFootprint, setCalculatedFootprint] = useState(null);
 
-  const handleSubmit = () => {
-    // Parsing input values to numbers
+  const handleSubmit = async () => {
+    const peopleValue = parseFloat(people) || 0;
     const electricityValue = parseFloat(electricity) || 0;
     const naturalGasValue = parseFloat(naturalGas) || 0;
     const heatingOilValue = parseFloat(heatingOil) || 0;
     const propaneValue = parseFloat(propane) || 0;
 
-    // Calculating carbon footprint
     const electricityCO2 = (electricityValue * 852.3 * (1 / (1 - 0.0073)) / 1000 / 2204.6);
     const naturalGasCO2 = (naturalGasValue * 0.0550 / 1000);
     const propaneCO2 = (propaneValue / 42 * 236.0 / 1000);
     const heatingOilCO2 = (heatingOilValue / 42 * 426.1 / 1000);
     const calculatedFootprintValue = (electricityCO2 + naturalGasCO2 + propaneCO2 + heatingOilCO2).toFixed(2);
     
-    // Setting calculated footprint data
     setCalculatedData(prev => ({ ...prev, houseFootprint: calculatedFootprintValue }));
-
-    // Updating calculated footprint state
     setCalculatedFootprint(calculatedFootprintValue);
+
+    const documentData = {
+      email: user.email,
+      numberofpeople: peopleValue,
+      Electricity: electricityValue,
+      Natural_gas: naturalGasValue,
+      Heating_oil: heatingOilValue,
+      Propane: propaneValue
+    };
+
+    try {
+      const response = await addDocument(documentData);
+      setDocumentId(response.$id); // Store document ID
+      
+    } catch (error) {
+      console.error("Error adding document:", error);
+      alert("Failed to add document");
+    }
   };
 
   return (

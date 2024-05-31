@@ -1,19 +1,40 @@
 import React, { useState } from 'react';
+import { useAuth } from '../utils/AuthContext';
 import './componentscss.css';
 
-const Vehicle = ({ setCalculatedData }) => {
+const Vehicle = ({ setCalculatedData, documentId }) => {
+  const { user, addDocument } = useAuth();
   const [mileage, setMileage] = useState('');
   const [efficiency, setEfficiency] = useState('');
   const [fuelType, setFuelType] = useState('petrol');
   const [calculatedFootprint, setCalculatedFootprint] = useState(null);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const conversionFactor = fuelType === 'petrol' ? 8887 : 10180;
     const gallonsConsumed = parseFloat(mileage) / parseFloat(efficiency);
     const calculatedFootprintValue = (gallonsConsumed * conversionFactor * 0.001).toFixed(2);
     
     setCalculatedData(prev => ({ ...prev, vehicleFootprint: calculatedFootprintValue }));
     setCalculatedFootprint(calculatedFootprintValue);
+  
+    const documentData = {
+      email: user.email,
+      Mileage: parseFloat(mileage),
+      efficiency: parseFloat(efficiency), // Updated attribute name
+      Fuel_type: fuelType,
+       // Corrected attribute name
+    };
+  
+    try {
+      await addDocument(documentData, documentId);
+      
+    } catch (error) {
+      console.error("Error adding vehicle data:", error);
+      if (error.response && error.response.data) {
+        console.error("Appwrite error response:", error.response.data);
+      }
+      alert("Failed to add vehicle data");
+    }
   };
 
   return (

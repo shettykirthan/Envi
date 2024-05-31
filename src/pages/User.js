@@ -15,17 +15,18 @@ const User = () => {
     waterFootprint: null,
     vehicleFootprint: null,
   });
+  const [documentId, setDocumentId] = useState(null); // Store document ID
 
   const renderComponent = () => {
     switch (selectedComponent) {
       case 'Welcome':
         return <Welcome />;
       case 'House':
-        return <House setCalculatedData={setCalculatedData} />;
+        return <House setCalculatedData={setCalculatedData} setDocumentId={setDocumentId} />; // Pass setDocumentId
       case 'Water':
-        return <Water setCalculatedData={setCalculatedData} />;
+        return <Water setCalculatedData={setCalculatedData} documentId={documentId}/>;
       case 'Vehicle':
-        return <Vehicle setCalculatedData={setCalculatedData} />;
+        return <Vehicle setCalculatedData={setCalculatedData} documentId={documentId} />; // Pass documentId
       case 'Result':
         return <Result calculatedData={calculatedData} />;
       default:
@@ -63,13 +64,15 @@ const User = () => {
                   borderRadius: '12px',
                   cursor: 'pointer',
                   textAlign: 'center',
-                  backgroundColor: "#4CAF50"
+                  backgroundColor: selectedComponent === component ? "#4CAF50" : "white",
+                  border: selectedComponent === component ? "2px solid green" : "none", // Optional: Add a green border to the selected component
                 }}
               >
                 <CardContent>
                   <h3 style={{ fontSize: '15px', margin: 0 }}>{component}</h3>
                 </CardContent>
               </Card>
+
             </Grid>
           ))}
         </Grid>
