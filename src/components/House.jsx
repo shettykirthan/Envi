@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useAuth } from '../utils/AuthContext';
 import './componentscss.css';
 
-const House = ({ setCalculatedData, setDocumentId }) => {
+const House = ({ setCalculatedData, documentId }) => {
   const { user, addDocument } = useAuth();
   const [people, setPeople] = useState(1);
   const [electricity, setElectricity] = useState('');
@@ -37,12 +37,14 @@ const House = ({ setCalculatedData, setDocumentId }) => {
     };
 
     try {
-      const response = await addDocument(documentData);
-      setDocumentId(response.$id); // Store document ID
+      await addDocument(documentData, documentId);
       
     } catch (error) {
-      console.error("Error adding document:", error);
-      alert("Failed to add document");
+      console.error("Error adding House data:", error);
+      if (error.response && error.response.data) {
+        console.error("Appwrite error response:", error.response.data);
+      }
+      alert("Failed to add House data");
     }
   };
 

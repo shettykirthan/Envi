@@ -18,10 +18,10 @@ const Result = ({ calculatedData }) => {
         <span>House:</span> <span>{houseFootprint || 0} metric tons of CO2e</span>
       </div>
       <div className="footprint-item">
-        <span>Water:</span> <span>{waterFootprint || 0} metric tons of CO2e</span>
+        <span>Vehicle:</span> <span>{vehicleFootprint || 0} metric tons of CO2e</span>
       </div>
       <div className="footprint-item">
-        <span>Vehicle:</span> <span>{vehicleFootprint || 0} metric tons of CO2e</span>
+        <span>Water:</span> <span>{waterFootprint || 0} metric tons of CO2e</span>
       </div>
       <div className="footprint-total">
         <span>Total:</span> <span>{totalFootprint} metric tons of CO2e</span>

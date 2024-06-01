@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import "./componentscss.css"; // Import your CSS file for styling
 import { useAuth } from '../utils/AuthContext';
-const Welcome = ({ setCalculatedData, documentId }) => {
+const Welcome = ({setDocumentId }) => {
   const { user, addDocument } = useAuth();
   const [country, setCountry] = useState('');
   const [state, setState] = useState('');
@@ -20,14 +20,12 @@ const Welcome = ({ setCalculatedData, documentId }) => {
     };
   
     try {
-      await addDocument(documentData, documentId);
+      const response = await addDocument(documentData);
+      setDocumentId(response.$id); // Store document ID
       
     } catch (error) {
-      console.error("Error adding vehicle data:", error);
-      if (error.response && error.response.data) {
-        console.error("Appwrite error response:", error.response.data);
-      }
-      alert("Failed to add vehicle data");
+      console.error("Error adding document:", error);
+      alert("Failed to add document");
     }
   };
 
