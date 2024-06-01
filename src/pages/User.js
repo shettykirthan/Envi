@@ -20,7 +20,7 @@ const User = () => {
   const renderComponent = () => {
     switch (selectedComponent) {
       case 'Welcome':
-        return <Welcome />;
+        return <Welcome documentId={documentId}/>;
       case 'House':
         return <House setCalculatedData={setCalculatedData} setDocumentId={setDocumentId} />; // Pass setDocumentId
       case 'Water':
