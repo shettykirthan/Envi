@@ -28,7 +28,7 @@ const User = () => {
       case 'Vehicle':
         return <Vehicle setCalculatedData={setCalculatedData} documentId={documentId} />; // Pass documentId
       case 'Result':
-        return <Result calculatedData={calculatedData} />;
+        return <Result calculatedData={calculatedData} documentId={documentId} />;
       default:
         return <Welcome />;
     }
