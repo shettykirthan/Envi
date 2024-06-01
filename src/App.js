@@ -11,6 +11,7 @@ import User from './pages/User';
 import UserDashboard from './pages/UserDashboard';
 import PrivateRoutes from './utils/PrivateRoutes';
 import { AuthProvider } from './utils/AuthContext';
+import Room from './pages/Room/Room';
 function App() {
   return (
     <BrowserRouter>
@@ -27,6 +28,7 @@ function App() {
               <Route element ={<PrivateRoutes />}>
                 <Route path="/user" element={<User />} />
                 <Route path="/userdashboard" element={<UserDashboard />} />
+                <Route path="/room" element={<Room />}/>
               </Route>
           
 

@@ -41,6 +41,10 @@ const Result = ({ documentId, calculatedData }) => {
   const handleGoToDashboard = () => {
     navigate('/userdashboard');
   };
+  const handleGoToRoom= () => {
+    navigate('/room');
+  };
+
 
   return (
     <div className="result-container">
@@ -60,6 +64,9 @@ const Result = ({ documentId, calculatedData }) => {
       <div style={{display: "flex", justifyContent: "center", alignItems: "center", height: "30vh"}}>
         <button style={{width: "300px", color:"black"}} onClick={handleGoToDashboard}>
           Go to Dashboard
+        </button>
+        <button style={{width: "300px", color:"black"}} onClick={handleGoToRoom}>
+          Join room
         </button>
       </div>
     </div>

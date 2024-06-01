@@ -1,0 +1,140 @@
+
+
+:root{
+    --mainBgColor: "#c9facc"; /* Dark purple */
+    --secondaryBgColor: "#c9facc"; /* Muted purple */
+    --borderColor1: rgba(0, 181, 48, 0.921); /* Soft purple */
+    --borderColor2: rgb(42, 28, 190); /* Light purple */
+    --textColorMain: #211a1a; /* Light grey */
+    --textColorSecondary: rgb(184, 72, 72); /* Very light grey */
+    --themeColorMain: rgb(116, 220, 170); /* Purple */
+    --themeColorSecondary: #128724; /* Light purple */
+  }
+  #header--wrapper{
+    background-color: var(--mainBgColor);
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10px 10px 0 0;
+    border: 1px solid var(--borderColor1);
+    border-bottom: none;
+  }
+  
+  .header--link{
+    color: #5d5479; /* Light purple */
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .header--link:hover{
+    color: var(--themeColorSecondary);
+  }
+  
+.room--container{
+  padding: 2em;
+  background-color: var(--secondaryBgColor);
+  border-radius: 0 0 10px 10px;
+  border: 1px solid var(--borderColor1);
+}
+
+#message--form{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.send-btn--wrapper{
+  display: flex;
+  justify-content: flex-end;
+}
+.btn{
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .btn--lg{
+    padding: 1em 2em;
+  }
+  
+  .btn--main{
+    background-color: var(--themeColorMain);
+    color: #fff;
+  }
+  
+  .btn--secondary{
+    background-color: var(--themeColorSecondary);
+  }
+  
+  .btn:hover{
+    opacity: 0.7;
+  }
+  input[type="text"], input[type="password"], input[type="email"], textarea{
+    background: var(--mainBgColor);
+    border: none;
+    border-bottom: 1px solid var(--borderColor1);
+    padding: 1rem;
+    border-radius: 3px;
+    width: 100%;
+    color: var(--textColorMain);
+    outline: none;
+    font-size: 18px;
+    text-shadow: none !important;
+  }
+  
+.message--wrapper{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 0.5em;
+  margin: 1em;
+}
+.rooma{
+    color: #579d77; /* Purple */
+  }
+  
+  .roombody{
+    background-color: var(--mainBgColor);
+    color: var(--textColorMain);
+    max-width: 600px;
+  margin:20px auto;
+  }
+.message--header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.message--body{
+  padding: 0.5em 0;
+  color: var(--textColorSecondary);
+  background-color: var(--themeColorMain);
+  padding: 1em;
+  border-radius: 20px;
+  width: fit-content;
+  max-width: 100%;
+  word-wrap: break-word;
+}
+
+.message--body--owner{
+  border: 1px solid var(--themeColorMain);
+  background-color: var(--secondaryBgColor);
+}
+
+.message-timestamp{
+  margin-left: 1em;
+  color: rgb(164, 161, 161);
+}
+
+.delete--btn{
+  color: var(--themeColorSecondary);
+  cursor: pointer;
+  transition: 0.3s;
+  width: 16px;
+}
+
+.delete--btn:hover{
+  color: red;
+}
