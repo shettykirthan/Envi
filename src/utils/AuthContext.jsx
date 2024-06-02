@@ -1,6 +1,7 @@
 import { useContext, useState, useEffect, createContext } from "react";
 import React from 'react';
 import { account, databases } from "../appwrite/config";
+import { COLLECTION_ID_USERS, DATABASE_ID } from "../appwrite/appwriteConfig";
 
 const AuthContext = createContext();
 
@@ -93,15 +94,15 @@ export const AuthProvider = ({ children }) => {
       let response;
       if (documentId) {
         response = await databases.updateDocument(
-          '665999ea0028d0f501a9', // Replace with your database ID
-          '6659a5ae0027611de231', // Replace with your collection ID
+          DATABASE_ID, // Replace with your database ID
+          COLLECTION_ID_USERS, // Replace with your collection ID
           documentId, // Document ID to update
           documentData
         );
       } else {
         response = await databases.createDocument(
-          '665999ea0028d0f501a9', // Replace with your database ID
-          '6659a5ae0027611de231', // Replace with your collection ID
+          DATABASE_ID, // Replace with your database ID
+          COLLECTION_ID_USERS, // Replace with your collection ID
           'unique()', // Unique ID for the document
           documentData
         );
