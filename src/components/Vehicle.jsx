@@ -38,8 +38,8 @@ const Vehicle = ({ setCalculatedData, documentId }) => {
   };
 
   return (
-    <div className="car-container">
-      <h2>Vehicle carbon footprint calculator</h2>
+    <div className="welcome-container">
+      <h2 className='h2_comp'>Vehicle carbon footprint calculator</h2>
       <div className="form-container">
         <div className="input-group">
           <label>Mileage (miles):</label>

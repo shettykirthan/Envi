@@ -37,17 +37,10 @@ const Water = ({ setCalculatedData, documentId }) => {
 
 
   return (
-    <div className="flight-container">
-      <h2>Water carbon footprint calculator</h2>
+    <div className="welcome-container">
+      <h2 className='h2_comp'>Water carbon footprint calculator</h2>
       <div className="form-container">
-        <div className="input-group">
-          <label>How many people are in your household?</label>
-          <input 
-            type="number" 
-            value={people} 
-            onChange={(e) => setPeople(e.target.value)} 
-          />
-        </div>
+        
         <div className="input-group">
           <label>How many gallons of water used per day?:</label>
           <input 

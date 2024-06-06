@@ -1,0 +1,56 @@
+/* user.css */
+
+.user-input-section {
+    margin-top: 40px;
+  }
+  
+  .user-grid-container {
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    background-color: whitesmoke;
+    margin-right: 20px;
+    
+    
+  }
+  
+  .grid-item {
+    padding: 3px;
+    /* margin-top: 20px; */
+  }
+  
+  .card_user {
+    width: 100px;
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    margin-top: 20px; /* Add transition property */
+  }
+  
+  .card_user:hover {
+    opacity: 0.7;
+  }
+  
+  .card_user-selected {
+    border: 2px solid green;
+  }
+  
+  .card_user-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .button {
+    margin-right: 50px;
+  }

@@ -50,7 +50,7 @@ const House = ({ setCalculatedData, documentId }) => {
 
   return (
     <div className="welcome-container">
-      <h2>Household carbon footprint calculator</h2>
+      <h2 className='h2_comp'>Household carbon footprint calculator</h2>
       <div className="form-container">
         <div className="input-group">
           <label>How many people are in your household?</label>

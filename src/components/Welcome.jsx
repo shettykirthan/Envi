@@ -1,32 +1,37 @@
 import React, { useState } from 'react';
-import "./componentscss.css"; // Import your CSS file for styling
+// import "./componentscss.css"; // Import your CSS file for styling
 import { useAuth } from '../utils/AuthContext';
 import img from "../assests/saved.svg";
+import "./componentscss.css";
 
-const Welcome = ({ setDocumentId }) => {
+const Welcome = ({ setDocumentId, setIsFormSubmitted }) => {
   const { user, addDocument } = useAuth();
   const [country, setCountry] = useState('');
   const [state, setState] = useState('');
+  const [Date, setDate] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState(''); // New state for error message
 
   const handleSubmit = async () => {
     // Validation check
-    if (!country || !state) {
+    if (!country || !state || !Date) {
       setError('Please fill out all fields');
       return;
     }
 
     const documentData = {
       email: user.email,
+      user_id: user.$id,
       Country: country,
       State: state,
+      Date: Date,
     };
 
     try {
       const response = await addDocument(documentData);
       setDocumentId(response.$id); // Store document ID
       setIsSubmitted(true); // Update submission status
+      setIsFormSubmitted(true); // Notify parent component
       setError(''); // Clear error message
     } catch (error) {
       console.error("Error adding document:", error);
@@ -35,13 +40,14 @@ const Welcome = ({ setDocumentId }) => {
   };
 
   return (
+    <div className="main-comp-container">
     <div className="welcome-container">
-      <center><h2>Welcome to the web's leading carbon footprint calculator</h2></center>
+      <h2 className='h2_comp'>Welcome to the web's leading carbon footprint calculator</h2>
       <div className="form-container">
         <p>First, please tell us where you live:</p>
         <div className="input-group">
-          <label htmlFor="country">Country:</label>
-          <input
+          <label htmlFor="country" className='country'>Country:</label>
+          <input 
             type="text"
             id="country"
             value={country}
@@ -57,13 +63,23 @@ const Welcome = ({ setDocumentId }) => {
             onChange={(e) => setState(e.target.value)}
           />
         </div>
+        <div className="input-group">
+          <label htmlFor="state">Date: </label>
+          <input
+            type="text"
+            id="Date"
+            value={Date}
+            placeholder='YYYY-MM-DD'
+            onChange={(e) => setDate(e.target.value)}
+          />
+        </div>
         {error && <p className="error-message">{error}</p>} {/* Display error message */}
       </div>
 
       {!isSubmitted ? (
-        <button onClick={handleSubmit}>Save</button>
+        <button className='welcome_button' onClick={handleSubmit}>Save</button>
       ) : (
-        <button>
+        <button className='welcome_button'>
           <img src={img} alt="Saved" />
         </button>
       )}
@@ -73,6 +89,7 @@ const Welcome = ({ setDocumentId }) => {
         <p>Or, visit each of the tabs above to calculate your full carbon footprint.</p>
         <p>Following your calculation, you can offset / neutralise your emissions through one of our climate-friendly projects.</p>
       </center>
+    </div>
     </div>
   );
 };

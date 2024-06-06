@@ -3,21 +3,22 @@ import { useAuth } from '../utils/AuthContext';
 
 const AddDocument = () => {
     const { user, addDocument } = useAuth();
-    const [name, setName] = useState('');
+    const [user_id, setUser_id] = useState('');
     const [email, setEmail] = useState(user ? user.email : '');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!name || !email) {
-            alert("Please provide both name and email");
+        if (!user_id || !email) {
+            alert("Please provide both user_id and email");
             return;
         }
 
-        console.log("Form data:", { name, email }); // Log form data
+        console.log("Form data:", { user_id, email }); // Log form data
 
         try {
-            const documentData = { name, email };
-            const response = await addDocument(documentData);
+            // Add user_id to the documentData
+            const documentData = { user_id, email };
+            const response = await addDocument(documentData); // Add the document to the database
             alert("Document added successfully");
             console.log("Document response:", response); // Log response
         } catch (error) {
@@ -29,11 +30,11 @@ const AddDocument = () => {
     return (
         <form onSubmit={handleSubmit}>
             <div>
-                <label>Name:</label>
+                <label>user_id:</label>
                 <input
                     type="text"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    value={user_id}
+                    onChange={(e) => setUser_id(e.target.value)}
                 />
             </div>
             <div>

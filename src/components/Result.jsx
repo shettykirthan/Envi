@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './componentscss.css'; 
 import { useAuth } from '../utils/AuthContext';
 
+
 const Result = ({ documentId, calculatedData }) => {
   const { user, addDocument } = useAuth();
   const navigate = useNavigate();
@@ -21,7 +22,8 @@ const Result = ({ documentId, calculatedData }) => {
         houseFootprint: house,
         waterFootprint: water,
         vehicleFootprint: vehicle,
-        totalFootprint: total
+        totalFootprint: total,
+        
       };
 
       try {
@@ -38,8 +40,8 @@ const Result = ({ documentId, calculatedData }) => {
     handleSubmit();
   }, [addDocument, documentId, houseFootprint, totalFootprint, user.email, vehicleFootprint, waterFootprint]);
 
-  const handleGoToDashboard = () => {
-    navigate('/userdashboard');
+  const handleGoToRec = () => {
+    navigate('/recom_main');
   };
   const handleGoToRoom= () => {
     navigate('/room');
@@ -47,8 +49,8 @@ const Result = ({ documentId, calculatedData }) => {
 
 
   return (
-    <div className="result-container">
-      <h2>Your Carbon Footprint:</h2>
+    <div className="welcome-container">
+      <h2 className='h2_comp'>Your Carbon Footprint:</h2>
       <div className="footprint-item">
         <span>House:</span> <span>{houseFootprint || 0} metric tons of CO2e</span>
       </div>
@@ -62,8 +64,8 @@ const Result = ({ documentId, calculatedData }) => {
         <span>Total:</span> <span>{totalFootprint} metric tons of CO2e</span>
       </div>
       <div style={{display: "flex", justifyContent: "center", alignItems: "center", height: "30vh"}}>
-        <button style={{width: "300px", color:"black"}} onClick={handleGoToDashboard}>
-          Go to Dashboard
+        <button style={{width: "300px", color:"black"}} onClick={handleGoToRec}>
+          Get Suggestions
         </button>
         <button style={{width: "300px", color:"black"}} onClick={handleGoToRoom}>
           Join room

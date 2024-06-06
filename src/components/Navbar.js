@@ -25,8 +25,11 @@ const Navbar = () => {
         </div>
       </div>
       <div className={`nav-items ${isOpen ? 'open' : ''}`}>
+        <Link to="/">Home</Link>
         <Link to="/About">About</Link>
+        <Link to="/dashboard">Dashboard</Link>
         <Link to="/Contact">Contact</Link>
+        
         {user ? (
           <Link to="/login" onClick={logoutUser}>Logout</Link>
         ) : (
