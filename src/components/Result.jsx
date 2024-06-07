@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import './componentscss.css'; 
 import { useAuth } from '../utils/AuthContext';
 
-
 const Result = ({ documentId, calculatedData }) => {
   const { user, addDocument } = useAuth();
   const navigate = useNavigate();
@@ -23,7 +22,6 @@ const Result = ({ documentId, calculatedData }) => {
         waterFootprint: water,
         vehicleFootprint: vehicle,
         totalFootprint: total,
-        
       };
 
       try {
@@ -41,12 +39,11 @@ const Result = ({ documentId, calculatedData }) => {
   }, [addDocument, documentId, houseFootprint, totalFootprint, user.email, vehicleFootprint, waterFootprint]);
 
   const handleGoToRec = () => {
-    navigate('/recom_main');
+    navigate('/recom_main', { state: { totalFootprint } });
   };
   const handleGoToRoom= () => {
     navigate('/room');
   };
-
 
   return (
     <div className="welcome-container">

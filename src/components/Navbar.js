@@ -27,11 +27,17 @@ const Navbar = () => {
       <div className={`nav-items ${isOpen ? 'open' : ''}`}>
         <Link to="/">Home</Link>
         <Link to="/About">About</Link>
-        <Link to="/dashboard">Dashboard</Link>
         <Link to="/Contact">Contact</Link>
+        <Link to="/dashboard">Dashboard</Link>
+        
+        
         
         {user ? (
+          <>
+          
+          <Link to="/room">Room</Link>
           <Link to="/login" onClick={logoutUser}>Logout</Link>
+          </>
         ) : (
           <Link to="/login">Login</Link>
         )}
