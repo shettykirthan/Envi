@@ -1,0 +1,45 @@
+*{
+    box-sizing: border-box;
+}
+
+.suggestion_card{
+    border-color: #00C371;
+    
+    padding: 15px 50px 50px 50px;
+
+
+}
+.suggestion_bad{
+    color: red;
+    font-size: 6vh;
+    font-weight: bold;
+    
+    
+    text-align: center;
+}
+.suggestions{
+    padding: 40px;
+    width: 70%;
+    text-align: center;
+    margin-left: 15%;
+    font-weight: bold;
+    font-size: 4vh;
+    color: white;
+    background: linear-gradient(to bottom right, #98d8a4, #4cd44c);
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 40px;
+}
+.facts_and_credits{
+    color: rgb(87, 140, 220);
+    font-weight: bold;
+    font-size: larger;
+    line-height: 2.0;
+    padding:40px;
+}
+.h1tag{
+    text-align: center;
+    color:rgb(87, 140, 220);
+    margin-top: 60px;
+}
+

@@ -1,5 +1,6 @@
 import React from 'react';
 import CategoryCard from './CategoryCard';
+import './suggestions.css';
 
 const Average = () => {
   const suggestions = [

@@ -1,0 +1,31 @@
+*{
+    box-sizing: border-box;
+}
+
+.recommendations_h1{
+    text-align: center;
+    background-color: #00C371;
+    border-radius: 25px;
+    font-size: xx-large;
+    font-weight: bolder;
+    padding: 20px;
+    margin:0px 60px 0px 60px;
+}
+
+.category-container{
+    
+   /* background-color: #00C371; */
+   border-color: #00C371;
+   margin: 70px;
+   border-radius: 20px;
+
+}
+.total_value{
+    font-size: larger;
+    margin: 40px;
+    font-weight: bold;
+}
+.suggestion category{
+    background-color: #00C371;
+
+}

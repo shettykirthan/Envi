@@ -1,5 +1,6 @@
 import React from 'react';
 import CategoryCard from './CategoryCard';
+import './suggestions.css';
 
 const Poor = () => {
   const suggestions = [
@@ -14,12 +15,21 @@ const Poor = () => {
   const credits = 'Efforts to reduce your carbon footprint can help mitigate these effects.';
 
   return (
-    <CategoryCard
-      category="Poor"
-      suggestions={suggestions}
-      facts={facts}
-      credits={credits}
-    />
+    <React.Fragment>
+    <div className='suggestion_card'>
+  
+   <div className='suggestion_poor' >
+      Bad
+      </div>
+    <div className='suggestions'>
+      {suggestions}
+      </div>
+      <div className='facts_and_credits'>
+      fact: {facts}
+      credits: {credits}
+      </div>
+    </div>
+    </React.Fragment>
   );
 };
 
