@@ -12,6 +12,10 @@ import RecomMain from './Recommendation/recom_main';
 import PrivateRoutes from './utils/PrivateRoutes';
 import { AuthProvider } from './utils/AuthContext';
 import Room from './pages/Room/Room';
+import Sponser from './pages/sponser';
+import Eventlist from './pages/eventlist';
+import Event from './pages/mainevent';
+import Eventcreater from './pages/eventcreater';
 
 function App() {
   return (
@@ -28,6 +32,10 @@ function App() {
             <Route path="/user" element={<User />} />
             <Route path="/recom_main" element={<RecomMain />} />
             <Route path="/room" element={<Room />} />
+            <Route path="/sponser" element={<Sponser />} />
+            <Route path="/eventslist" element={<Eventlist />} />
+            <Route path="/event" element={<Event />} />
+            <Route path="/createevent" element={<Eventcreater />} />
           </Route>
         </Routes>
       </AuthProvider>

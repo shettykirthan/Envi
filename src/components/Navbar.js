@@ -32,8 +32,13 @@ const Navbar = () => {
         
         {user ? (
           <>
-          <Link to="/room">Room</Link>
-          <Link to="/login" onClick={logoutUser}>Logout</Link>
+            <Link to="/room">Room</Link>
+            {user.$id === 'admin' || user.$id === 'admin1' ? (
+              <Link to="/createevent">Create</Link>
+            ) : (
+              <Link to="/eventslist">Events</Link>
+            )}
+            <Link to="/login" onClick={logoutUser}>Logout</Link>
           </>
         ) : (
           <Link to="/login">Login</Link>
