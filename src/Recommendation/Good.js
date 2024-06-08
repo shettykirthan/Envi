@@ -22,7 +22,6 @@ const Good = () => {
     <div className='suggestion_card'>
   
    <div className='suggestion_good' >
-      Bad
       </div>
     <div className='suggestions'>
       suggestions={suggestions}

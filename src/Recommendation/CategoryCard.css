@@ -1,31 +1,124 @@
-*{
-    box-sizing: border-box;
-}
-
-.recommendations_h1{
-    text-align: center;
-    background-color: #00C371;
-    border-radius: 25px;
-    font-size: xx-large;
-    font-weight: bolder;
+/* General styling for category cards */
+.category-card {
+    background-color: #ffffff;
     padding: 20px;
-    margin:0px 60px 0px 60px;
-}
-
-.category-container{
-    
-   /* background-color: #00C371; */
-   border-color: #00C371;
-   margin: 70px;
-   border-radius: 20px;
-
-}
-.total_value{
-    font-size: larger;
-    margin: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 20px auto; /* Center the card */
+    width: 80%;
+    max-width: 600px;
+    font-family: Arial, sans-serif;
+    color: #333;
+  }
+  
+  .category-card h2 {
+    color: #00C371;
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: bolder;
+  }
+  
+  .category-card h3 {
+    color: #185e18;
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: bolder;
+  }
+  
+  .category-card ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    color: #555;
+    line-height: 1.5;
     font-weight: bold;
-}
-.suggestion category{
-    background-color: #00C371;
-
-}
+  }
+  
+  .category-card p {
+    color: #333;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
+  /* Additional styling for category containers */
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* Light grey background for contrast */
+  }
+  
+  .category-container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 128, 0, 0.6); /* Green shadow */
+    margin: 20px auto;
+    width: 80%;
+    max-width: 800px;
+    text-align: center;
+  }
+  
+  .category-container h1 {
+    color: #00C371;
+    font-size: 28px;
+    margin-bottom: 20px;
+    font-weight: bolder;
+  }
+  
+  .category-container p {
+    color: #333;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  
+  .category-container .prediction-value {
+    color: #185e18;
+    font-size: 22px;
+    font-weight: bolder;
+    margin-bottom: 20px;
+  }
+  
+  .category-container .category-component {
+    margin-top: 20px;
+  }
+  
+  /* Styling for category names */
+  .category-name {
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* Black trace */
+  }
+  
+  .category-name.bad {
+    color: red;
+  }
+  
+  .category-name.poor {
+    color: orange;
+  }
+  
+  .category-name.average {
+    color: yellow;
+  }
+  
+  .category-name.good {
+    color: green;
+  }
+  
+  .category-name.excellent {
+    color: blue;
+  }
+  
+  /* Additional styling for buttons, links, etc. if needed */
+  
+  /* Media queries for responsiveness */
+  @media only screen and (max-width: 768px) {
+    .category-card,
+    .category-container {
+      width: 90%;
+      max-width: none;
+  }
+  }

@@ -1,12 +1,10 @@
-
-
-
-.welcome-container {
-  background-color: #3faf29; /* Light green background */
+/* General styling for category cards */
+.welcome-container, .flight-container, .car-container, .motorbike-container {
+  background-color: #c9facc; /* Light green background */
   padding: 20px;
-  /* margin: 20px; */
   border-radius: 10px;
-  margin: 40px 70px 0px 70px;
+  margin: 40px 5% 0px 5%; /* Adjusted margin for responsiveness */
+  max-width: 90%; /* Adjusted max-width for responsiveness */
 }
 
 .form-container {
@@ -25,85 +23,7 @@ label {
 }
 
 input[type="text"],
-input[type="date"] {
-  width: 100%;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
-
-input[type="text"]:focus,
-input[type="date"]:focus {
-  outline: none;
-  border-color: #5cb85c; /* Green focus border */
-}
-.welcome-container {
-  background-color: #c9facc; /* Light green background */
-  padding: 20px;
-  border-radius: 10px;
-}
-
-.form-container {
-  max-width: 500px;
-  margin: 0 auto;
-}
-
-.input-group {
-  margin-bottom: 15px;
-}
-
-label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
-input[type="number"] {
-  width: 100%;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
-
-input[type="number"]:focus {
-  outline: none;
-  border-color: #c1c8c1; /* Green focus border */
-}
-.welcome_button{
-  width: 10%;
-  padding: 13px;
-  border-radius: 14px;
-}
-
-
-
-button:hover {
-  background-color: #4cae4c; /* Darker green on hover */
-}
-.flight-container {
-  background-color: #c9facc; /* Light green background */
-  padding: 20px;
-  border-radius: 10px;
-}
-
-.form-container {
-  max-width: 500px;
-  margin: 0 auto;
-}
-
-.input-group {
-  margin-bottom: 15px;
-}
-
-label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
-input[type="text"],
+input[type="date"],
 input[type="number"],
 select {
   width: 100%;
@@ -114,99 +34,14 @@ select {
 }
 
 input[type="text"]:focus,
+input[type="date"]:focus,
 input[type="number"]:focus,
 select:focus {
   outline: none;
   border-color: #5cb85c; /* Green focus border */
 }
 
-
-
-button:hover {
-  background-color: #4cae4c; /* Darker green on hover */
-}
-
-input[type="checkbox"] {
-  margin-right: 10px;
-}
-
-.car-container {
-  background-color: #c9facc; /* Light green background */
-  padding: 20px;
-  border-radius: 10px;
-}
-
-.form-container {
-  max-width: 500px;
-  margin: 0 auto;
-}
-
-.input-group {
-  margin-bottom: 15px;
-}
-
-label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
-input[type="number"],
-select {
-  width: 100%;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
-
-input[type="number"]:focus,
-select:focus {
-  outline: none;
-  border-color: #5cb85c; /* Green focus border */
-}
-
-
-
-button:hover {
-  background-color: #4cae4c; /* Darker green on hover */
-}
-.motorbike-container {
-  background-color: #c9facc; /* Light green background */
-  padding: 20px;
-  border-radius: 10px;
-}
-
-.form-container {
-  max-width: 500px;
-  margin: 0 auto;
-}
-
-.input-group {
-  margin-bottom: 15px;
-}
-
-label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
-input[type="number"],
-select {
-  width: 100%;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
-
-input[type="number"]:focus,
-select:focus {
-  outline: none;
-  border-color: #5cb85c; /* Green focus border */
-}
-
+/* Buttons */
 button {
   display: block;
   margin: 0 auto; /* This centers the button horizontally */
@@ -220,40 +55,40 @@ button {
   cursor: pointer;
 }
 
-
 button:hover {
   background-color: #4cae4c; /* Darker green on hover */
 }
 
-
+/* Result container */
 .result-container {
   background-color: #c9facc; /* Light blue background */
   padding: 30px;
   border-radius: 10px;
-  max-width: 80%;
-
+  max-width: 90%;
   margin: 0 auto;
 }
 
-.h2_comp{
+.h2_comp {
   text-align: center;
   color: white;
   width: 50%;
   padding: 20px;
   margin-left: 25%;
-    align-items: center;
-    border-radius: 17px;
+  align-items: center;
+  border-radius: 17px;
   background-color: rgb(22, 208, 100); /* Teal color */
 }
 
-.footprint-item, .footprint-total {
+.footprint-item,
+.footprint-total {
   display: flex;
   justify-content: space-between;
   padding: 10px 0;
   border-bottom: 1px solid #ccc;
 }
 
-.footprint-item:last-child, .footprint-total {
+.footprint-item:last-child,
+.footprint-total {
   border-bottom: none;
 }
 
@@ -263,4 +98,36 @@ button:hover {
 
 span {
   color: #004d40; /* Dark teal color */
+}
+
+/* Navbar Styling */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand a {
+  color: #333;
+  text-decoration: none;
+  font-size: 2.0rem;
+  font-weight: bolder;
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.nav-toggle .bar {
+  height: 3px;
+  width: 25px;
+  background-color: #000; /* Black color for hamburger lines */
+  margin: 4px 0;
+  transition: 0.4s;
 }

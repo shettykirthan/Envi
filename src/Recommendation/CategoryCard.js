@@ -1,5 +1,4 @@
 import React from 'react';
-
 import './CategoryCard.css';
 
 const CategoryCard = ({ category, suggestions, facts, credits }) => {
@@ -19,4 +18,4 @@ const CategoryCard = ({ category, suggestions, facts, credits }) => {
   );
 };
 
-export default CategoryCard;
+export default CategoryCard;

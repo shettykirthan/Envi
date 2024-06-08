@@ -19,7 +19,7 @@ const Poor = () => {
     <div className='suggestion_card'>
   
    <div className='suggestion_poor' >
-      Bad
+      Poor
       </div>
     <div className='suggestions'>
       {suggestions}

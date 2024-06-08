@@ -20,7 +20,7 @@ const Excellent = () => {
     <div className='suggestion_card'>
   
    <div className='suggestion_excellent' >
-      Bad
+      Excellent
       </div>
     <div className='suggestions'>
       suggestions={suggestions}

@@ -6,8 +6,10 @@ export const DATABASE_ID = '665999ea0028d0f501a9';
 export const COLLECTION_ID_USERS = '66606a990031be0a04f1'; 
 export const COLLECTION_ID_MESSAGES = 'messages123';
 export const COLLECTION_ID_CHANNELS = '66606ca800173b3415dc';
+
 export const Events= 'Eventid';
 export const currentEvent= 'currentevent';
+
 
 const client = new Client()
     .setEndpoint(API_ENDPOINT)

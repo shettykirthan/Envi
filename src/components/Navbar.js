@@ -27,11 +27,14 @@ const Navbar = () => {
       <div className={`nav-items ${isOpen ? 'open' : ''}`}>
         <Link to="/">Home</Link>
         <Link to="/About">About</Link>
-        <Link to="/dashboard">Dashboard</Link>
         <Link to="/Contact">Contact</Link>
+        <Link to="/dashboard">Dashboard</Link>
+        
+        
         
         {user ? (
           <>
+
             <Link to="/room">Room</Link>
             {user.$id === 'admin' || user.$id === 'admin1' ? (
               <Link to="/createevent">Create</Link>
@@ -39,6 +42,7 @@ const Navbar = () => {
               <Link to="/eventslist">Events</Link>
             )}
             <Link to="/login" onClick={logoutUser}>Logout</Link>
+
           </>
         ) : (
           <Link to="/login">Login</Link>

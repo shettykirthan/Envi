@@ -18,10 +18,10 @@ const House = ({ setCalculatedData, documentId }) => {
     const heatingOilValue = parseFloat(heatingOil) || 0;
     const propaneValue = parseFloat(propane) || 0;
 
-    const electricityCO2 = (electricityValue * 852.3 * (1 / (1 - 0.0073)) / 1000 / 2204.6);
-    const naturalGasCO2 = (naturalGasValue * 0.0550 / 1000);
-    const propaneCO2 = (propaneValue / 42 * 236.0 / 1000);
-    const heatingOilCO2 = (heatingOilValue / 42 * 426.1 / 1000);
+    const electricityCO2 = (electricityValue * 0.404 / 1000);  // Convert kWh to tons CO2
+    const naturalGasCO2 = (naturalGasValue * 0.0053);  // No conversion needed
+    const heatingOilCO2 = (heatingOilValue * 22.38 / 2000);  // Convert gallons to tons CO2
+    const propaneCO2 = (propaneValue * 12.68 / 2000);  // Convert gallons to tons CO2
     const calculatedFootprintValue = (electricityCO2 + naturalGasCO2 + propaneCO2 + heatingOilCO2).toFixed(2);
     
     setCalculatedData(prev => ({ ...prev, houseFootprint: calculatedFootprintValue }));
@@ -50,7 +50,7 @@ const House = ({ setCalculatedData, documentId }) => {
 
   return (
     <div className="welcome-container">
-      <h2 className='h2_comp'>Household carbon footprint calculator</h2>
+      <h2>Household carbon footprint calculator</h2>
       <div className="form-container">
         <div className="input-group">
           <label>How many people are in your household?</label>
@@ -101,4 +101,4 @@ const House = ({ setCalculatedData, documentId }) => {
   );
 };
 
-export default House;
+export default House;

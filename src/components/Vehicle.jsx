@@ -10,24 +10,29 @@ const Vehicle = ({ setCalculatedData, documentId }) => {
   const [calculatedFootprint, setCalculatedFootprint] = useState(null);
 
   const handleSubmit = async () => {
-    const conversionFactor = fuelType === 'petrol' ? 8887 : 10180;
-    const gallonsConsumed = parseFloat(mileage) / parseFloat(efficiency);
-    const calculatedFootprintValue = (gallonsConsumed * conversionFactor * 0.001).toFixed(2);
+    const mileageValue = parseFloat(mileage) || 0;
+    const efficiencyValue = parseFloat(efficiency) || 0;
+    const fuelTypeConversionFactor = {
+      petrol: 10.15 / 2000,  // Conversion factor for petrol
+      diesel: 19.6 / 2000,   // Conversion factor for diesel
+      electric: 0,           // No CO2 emissions for electric vehicles
+      hybrid: 0              // No CO2 emissions for hybrid vehicles
+    };
+    const conversionFactor = fuelTypeConversionFactor[fuelType];
+    const calculatedFootprintValue = ((mileageValue / efficiencyValue) * conversionFactor).toFixed(2);
     
     setCalculatedData(prev => ({ ...prev, vehicleFootprint: calculatedFootprintValue }));
     setCalculatedFootprint(calculatedFootprintValue);
   
     const documentData = {
       email: user.email,
-      Mileage: parseFloat(mileage),
-      efficiency: parseFloat(efficiency), // Updated attribute name
-      Fuel_type: fuelType,
-       // Corrected attribute name
+      Mileage: mileageValue,
+      efficiency: efficiencyValue,
+      Fuel_type: fuelType
     };
   
     try {
       await addDocument(documentData, documentId);
-      
     } catch (error) {
       console.error("Error adding vehicle data:", error);
       if (error.response && error.response.data) {
@@ -36,10 +41,11 @@ const Vehicle = ({ setCalculatedData, documentId }) => {
       alert("Failed to add vehicle data");
     }
   };
+  
 
   return (
-    <div className="welcome-container">
-      <h2 className='h2_comp'>Vehicle carbon footprint calculator</h2>
+    <div className="car-container">
+      <h2>Vehicle carbon footprint calculator</h2>
       <div className="form-container">
         <div className="input-group">
           <label>Mileage (miles):</label>
@@ -78,4 +84,4 @@ const Vehicle = ({ setCalculatedData, documentId }) => {
   );
 };
 
-export default Vehicle;
+export default Vehicle;

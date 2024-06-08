@@ -1,13 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './componentscss.css'; 
 import { useAuth } from '../utils/AuthContext';
+import axios from 'axios';
 
 const Result = ({ documentId, calculatedData }) => {
   const { user, addDocument } = useAuth();
   const navigate = useNavigate();
   const { houseFootprint, waterFootprint, vehicleFootprint } = calculatedData;
   const totalFootprint = (parseFloat(houseFootprint || 0) + parseFloat(waterFootprint || 0) + parseFloat(vehicleFootprint || 0)).toFixed(2);
+  const [prediction, setPrediction] = useState(null);
 
   useEffect(() => {
     const handleSubmit = async () => {
@@ -38,10 +40,28 @@ const Result = ({ documentId, calculatedData }) => {
     handleSubmit();
   }, [addDocument, documentId, houseFootprint, totalFootprint, user.email, vehicleFootprint, waterFootprint]);
 
+  useEffect(() => {
+    const fetchPrediction = async () => {
+      try {
+        const response = await axios.post('http://127.0.0.1:5000/predict', { email: user.email });
+        setPrediction(response.data.forecast);
+      } catch (error) {
+        console.error("Error fetching prediction:", error);
+      }
+    };
+
+    fetchPrediction();
+  }, [user.email]);
+
   const handleGoToRec = () => {
-    navigate('/recom_main', { state: { totalFootprint } });
+    if (prediction !== null) {
+      navigate('/recom_main', { state: { prediction: parseFloat(prediction).toFixed(2) } });
+    } else {
+      alert("Prediction data is not available");
+    }
   };
-  const handleGoToRoom= () => {
+
+  const handleGoToRoom = () => {
     navigate('/room');
   };
 
@@ -60,6 +80,11 @@ const Result = ({ documentId, calculatedData }) => {
       <div className="footprint-total">
         <span>Total:</span> <span>{totalFootprint} metric tons of CO2e</span>
       </div>
+      {prediction !== null && (
+        <div className="footprint-prediction">
+          <span>Predicted Total Footprint for Next Month:</span> <span>{prediction.toFixed(2)} metric tons of CO2e</span>
+        </div>
+      )}
       <div style={{display: "flex", justifyContent: "center", alignItems: "center", height: "30vh"}}>
         <button style={{width: "300px", color:"black"}} onClick={handleGoToRec}>
           Get Suggestions
@@ -72,4 +97,4 @@ const Result = ({ documentId, calculatedData }) => {
   );
 };
 
-export default Result;
+export default Result;
